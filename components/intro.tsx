@@ -2,12 +2,13 @@
 
 import Image from "next/image";
 import React from "react";
-import ProfilePic from "../public/ProfilePic.png";
+
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { BsArrowRight, BsLinkedin } from "react-icons/bs";
+import { BsArrowRight, BsLinkedin, BsGlobe } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
-import { FaGithubSquare } from "react-icons/fa";
+import { FaGithubSquare, FaTwitter } from "react-icons/fa";
+import { SiGeeksforgeeks, SiLeetcode, SiCodingninjas } from "react-icons/si";
 import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active-section-context";
 import { FlipWords } from "./ui/flip-words";
@@ -16,7 +17,8 @@ export default function Intro() {
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
   const { ref } = useSectionInView("Home", 0.5);
 
-  const words = ["Software Engineer", "NextJS Developer", "Automation Tester"];
+  const words = ["Full-Stack Developer","React Developer",
+    "MERN Stack Developer","SpringBoot Developer", "DevOps"];
 
   return (
     <section
@@ -35,13 +37,13 @@ export default function Intro() {
             }}
           >
             <Image
-              src={ProfilePic}
+              src="/profile.png"
               alt="Profile Picture"
-              width="192"
-              height="192"
-              quality="95"
+              width={192}
+              height={192}
+              quality={95}
               priority={true}
-              className="h-24 w-24 object-cover shadow-xl rounded-full border-[0.35rem] border-white"
+              className="h-24 w-24 object-cover object-[50%_38%] shadow-xl rounded-full border-[0.35rem] border-white"
             />
           </motion.div>
           <motion.span
@@ -64,10 +66,9 @@ export default function Intro() {
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <span className="font-bold">Hello, I&apos;m Sparsh.</span> I&apos;m a{" "}
-        <span className="font-bold"><FlipWords className="!text-black" duration={2000} words={words} /></span> with{" "}
-        <span className="font-bold">2 years</span> of experience. I enjoy
-        building <span className="italic">websites</span>. My focus is{" "}
+        <span className="font-bold">Hello, I&apos;m Sahil.</span> I&apos;m a {" "}
+        <span className="font-bold"><FlipWords className="!text-black" duration={2000} words={words} /></span>.
+        I enjoy building <span className="italic">web applications</span>. My focus is{" "}
         <span className="underline">React (Next.js)</span>.
       </motion.h1>
       <motion.div
@@ -90,27 +91,80 @@ export default function Intro() {
 
         <a
           className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:text-gray-950 hover:bg-gray-200 active:scale-105 transition cursor-pointer border border-black/10"
-          href="/SparshJainResume2024.pdf"
-          download
+          href="https://drive.google.com/file/d/1n3d-SjtBixUXiL11WdIohY1Q-XrpLE8M/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          Download CV{" "}
-          <HiDownload className="opacity-60 group-hover:translate-x-[0.5] transition" />
+          Resume{" "}
+          
         </a>
 
         <a
-          href="https://www.linkedin.com/in/sparsh-jain-54022319b/"
+          href="https://www.linkedin.com/in/striiver/"
           target="_blank"
+          rel="noopener noreferrer"
           className="group bg-white p-4 text-gray-700 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 hover:bg-gray-200 active:scale-105 transition cursor-pointer border border-black/10"
         >
           <BsLinkedin />
         </a>
 
         <a
-          href="https://github.com/jainsparsh5"
+          href="https://github.com/sahilTiwariiii"
           target="_blank"
+          rel="noopener noreferrer"
           className="group bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 hover:bg-gray-200 active:scale-105 transition cursor-pointer border border-black/10"
         >
           <FaGithubSquare />
+        </a>
+
+        {/* Twitter */}
+        <a
+          href="https://x.com/sahil_tiwa96610"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 hover:bg-gray-200 active:scale-105 transition cursor-pointer border border-black/10"
+        >
+          <FaTwitter />
+        </a>
+
+        {/* GeeksforGeeks */}
+        <a
+          href="https://www.geeksforgeeks.org/user/sahiltiwnbyj/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 hover:bg-gray-200 active:scale-105 transition cursor-pointer border border-black/10"
+        >
+          <SiGeeksforgeeks />
+        </a>
+
+        {/* LeetCode */}
+        <a
+          href="https://leetcode.com/u/samrat____/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 hover:bg-gray-200 active:scale-105 transition cursor-pointer border border-black/10"
+        >
+          <SiLeetcode />
+        </a>
+
+        {/* Coding Ninjas / Code360 */}
+        <a
+          href="https://www.naukri.com/code360/profile/sahil1234"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 hover:bg-gray-200 active:scale-105 transition cursor-pointer border border-black/10"
+        >
+          <SiCodingninjas />
+        </a>
+
+        {/* Portfolio */}
+        <a
+          href="https://sahiltportfolio.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group bg-white p-4 text-gray-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 hover:bg-gray-200 active:scale-105 transition cursor-pointer border border-black/10"
+        >
+          <BsGlobe />
         </a>
       </motion.div>
     </section>

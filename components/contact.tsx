@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import SectionHeading from "./section-heading";
-import { FaPaperPlane, FaRegSmileBeam } from "react-icons/fa";
+import { FaPaperPlane, FaRegSmileBeam, FaEnvelope, FaPhone } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hooks";
 import emailjs from "@emailjs/browser";
@@ -15,24 +15,31 @@ export default function Contact() {
 
   const form = useRef<any>();
 
-  const sendEmail = (e: any) => {
+  const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
 
-    emailjs
-      .sendForm("service_1eza72y", "template_rxyqqci", form.current, {
-        publicKey: "IVlDdqGGBNvUF3b6N",
-      })
-      .then(
-        () => {
-          form.current.reset();
-          setIsLoading(false);
-          setIsSubmitted(true);
-        },
-        (error) => {
-          setIsLoading(false);
-        }
+    try {
+      const templateParams = {
+        to_email: "samrattiwari156@gmail.com",
+        user_email: form.current?.user_email?.value || "",
+        message: form.current?.message?.value || "",
+      };
+
+      await emailjs.send(
+        "service_ibdlwqm",
+        "template_9iv73s7",
+        templateParams,
+        { publicKey: "NXgDpxJNkkfZbbcs8" }
       );
+
+      form.current.reset();
+      setIsSubmitted(true);
+    } catch (err) {
+      console.error("Email send failed:", err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -51,17 +58,28 @@ export default function Contact() {
     >
       <SectionHeading>Contact Me</SectionHeading>
       <p className="text-gray-700 -mt-4">
-        Please contact me directly at{" "}
-        <a className="underline" href="mailto:jainsparsh17@gmail.com">
-          jainsparsh17@gmail.com
-        </a>{" "}
-        or through this form.
+        Please reach out using the form below. I’ll get back to you soon.
       </p>
+
+      <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mt-6 mb-10 text-lg">
+        <div className="flex items-center gap-2">
+            <FaEnvelope />
+            <a href="mailto:samrattiwari156@gmail.com" className="hover:underline">
+                samrattiwari156@gmail.com
+            </a>
+        </div>
+        <div className="flex items-center gap-2">
+            <FaPhone />
+            <a href="tel:+918670558757" className="hover:underline">8670558757</a>
+        </div>
+      </div>
+
       <form
         className="mt-10 flex flex-col items-center"
         ref={form}
         onSubmit={sendEmail}
       >
+        <input type="hidden" name="to_email" value="samrattiwari156@gmail.com" />
         <input
           className="h-14 w-full rounded-lg border border-black/10 px-4"
           placeholder="Your email"

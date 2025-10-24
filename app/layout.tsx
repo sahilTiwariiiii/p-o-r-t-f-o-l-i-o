@@ -6,9 +6,9 @@ import ActiveSectionContextProvider from "@/context/active-section-context";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Sparsh Jain | Personal Portfolio",
+  title: "Sahil Tiwari | Personal Portfolio",
   description:
-    "Sparsh Jain is a software engineer based in India. He is passionate about building products that make a difference.",
+    "Sahil Tiwari is a full-stack developer and SDE Intern. Passionate about building scalable web applications.",
 };
 
 export default function RootLayout({

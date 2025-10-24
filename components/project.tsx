@@ -15,6 +15,7 @@ export default function Project({
   tags,
   imageUrl,
   linkToProject,
+  sourceCodeUrl,
 }: ProjectProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -48,6 +49,22 @@ export default function Project({
                 </CardItem>
               ))}
             </ul>
+            <div className="mt-4 flex items-center gap-3">
+              <a
+                href={linkToProject}
+                target="_blank"
+                className="group bg-gray-900 text-white px-5 py-2 rounded-full outline-none focus:scale-105 hover:scale-105 hover:bg-gray-950 active:scale-100 transition"
+              >
+                Live Link
+              </a>
+              <a
+                href={sourceCodeUrl}
+                target="_blank"
+                className="group bg-white px-5 py-2 rounded-full outline-none focus:scale-105 hover:scale-105 hover:text-gray-950 hover:bg-gray-200 active:scale-100 transition border border-black/10"
+              >
+                Source Code
+              </a>
+            </div>
           </div>
         </CardBody>
 
@@ -60,7 +77,7 @@ export default function Project({
             src={imageUrl}
             alt="Project I worked on"
             quality={95}
-            className="object-cover object-top shadow-2xl transition group-hover:scale-[1.04]"
+            className="object-cover object-center shadow-2xl transition group-hover:scale-[1.03]"
             fill
           />
         </a>
